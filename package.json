@@ -1,0 +1,17 @@
+{
+  "name": "SampleAppMovies",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-native": "0.27.2",
+    "react-native-button": "^1.6.0",
+    "react-native-modalbox": "^1.3.3",
+    "react-native-popwindow": "0.0.9",
+    "react-native-storage": "^0.1.1",
+    "react-native-swipeout": "^2.0.12"
+  }
+}
