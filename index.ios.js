@@ -55,7 +55,6 @@ class App extends Component {
           tintColor: '#fff',
           passProps: {
             showBindModal: this._showBindModal.bind(this),
-
           },
         }}
         configureScene={()=>{return NavigatorIOS.SceneConfigs.PushFromRight;}}

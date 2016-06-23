@@ -26,7 +26,7 @@ export default class BindModal extends Component {
   render() {
 
     return (
-      <Modalbox isOpen={true} backdrop={false} style={styles.bindModal} ref='modal'>
+      <Modalbox isOpen={false} backdrop={false} style={styles.bindModal} ref='modal'>
         <Button style={styles.bindModalClose} onPress={this.hide.bind(this)}>关闭</Button>
         <View style={styles.bindModalForm}>
           <Text style={styles.formTitle}>绑定信息门户账号</Text>

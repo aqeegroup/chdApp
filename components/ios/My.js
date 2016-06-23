@@ -102,7 +102,7 @@ class CurrentUser extends Component {
     route.rightButtonTitle = '添加';
     // console.log(route);
     route.onRightButtonPress = () => {
-      console.log(this.props);
+      // console.log(this.props);
       this.props.showBindModal();
     };
     route.passProps = {callSetState: this.callSetState.bind(this)};
