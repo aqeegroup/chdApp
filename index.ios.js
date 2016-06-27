@@ -12,8 +12,6 @@ import {
 
 } from 'react-native';
 
-// 存储
-import Storage from './components/common/Storage';
 // 绑定学号的模态框
 import BindModal from './components/common/BindModal';
 

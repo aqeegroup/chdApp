@@ -18,7 +18,7 @@ import {
 import Button from 'react-native-button';
 import Swipeout from 'react-native-swipeout';
 
-import Storage from '../common/Storage';
+import storage from '../common/Storage';
 
 var rightIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACY0lEQVR4Xu2ZQU7CQBSG3wtEYCU30BvIDaQbkrLSDbATTiCeQG+gnkDcARtYtQkb8ATiEbwBrkACjpmGJiTSyiTTNy/tsJ7Q/t/7/5n3pggZ/2HG9YMFYB2QcQI2Ahk3gN0EbQRsBDJOgDQCQ99vQy43b9Rqcy7cyQAMPO8KEEcgxALzeYcLBBIAw8mkIjabKSCWg8ozgpA4gD/iQ+8zgZA8AN9vC4CXqMwjQKfhuj1Te0LiAKSwwAXb7QwATg8JNQmBBABnCGQAuEIgBRBC+Nlsxoh4digOAqDXct0O1Z5ADkAKG02n5e/VaoYAF6YhGAHACYIxAMdCKBSLd9eOs0gqEkYBhBDWy+UYEC8PihRiflIqOUlBMA4gFD3wfdkM3VBDYANACjcBgRWAYyBgPt/ROUmyA7CD8AAA9xFx0DpOswQQNExxQ5TGSZItACoIrAFICH3fn0d1jDqmSNYA4k4FHeIlYLYAKMSzBdD3vCdEvI1of1+brtvW1Rqzc0Ds7g+gVTw7B1CLZwXgn3P/rVmvV3XZfv9/WEQg8upcfkIA+CgUi9XUToMmxRuPQKx4IT4LpVIlqcqHMTAWgd294DsCnB/I9hfmclWdU1/U/mEEgBS/Xi7lt8KKSfFGIsBJvBEAA8+bRd3/6ervVY5L0ghQ9fcsAXAUTxaBuC5PCPHcqte7KlXTuZYsAhEO0D7cqMIhAxDc7nheFxEfdy9pXDxZBParEsRBiHZSww1rB6i+HMV60ghQCFJ9hgWgSixt660D0lZRVT3WAarE0rbeOiBtFVXVYx2gSixt660D0lZRVT2/HgUvUOK5KAsAAAAASUVORK5CYII=';
 
@@ -31,10 +31,10 @@ export default class My extends Component {
       showBindModal: this.props.showBindModal,
     };
     // 清空测试数据
-    /*Storage.remove({
+    /*storage.remove({
       key: 'currentUser'
     });
-    Storage.clearMapForKey('bindUsers');*/
+    storage.clearMapForKey('bindUsers');*/
   }
 
   render() {
@@ -59,7 +59,7 @@ class CurrentUser extends Component {
     };
   }
   componentWillMount() {
-    Storage.load({
+    storage.load({
       key: 'currentUser',
     }).then(ret => {
       console.log(ret);
@@ -123,14 +123,14 @@ class CurrentUser extends Component {
       xuehao: Math.random(),
       mima: '123456',
     };
-    Storage.save({
+    storage.save({
       key: 'bindUsers',  // 注意:请不要在key中使用_下划线符号!
       id: user.xuehao,
       rawData: user,
       expires: null
     });
     if (! this.state.currentUser) {
-      Storage.save({
+      storage.save({
         key: 'currentUser',  // 注意:请不要在key中使用_下划线符号!
         rawData: user,
         expires: null   
@@ -147,14 +147,14 @@ class BindList extends Component {
     this.state = {};
   }
   componentWillMount() {
-    Storage.getAllDataForKey('bindUsers').then(ret => {
+    storage.getAllDataForKey('bindUsers').then(ret => {
       // console.log(ret);
       this.setState({
         bindUsers: ret,
       });
     });
 
-    Storage.load({
+    storage.load({
       key: 'currentUser',
     }).then(ret => {
       this.setState({
@@ -217,7 +217,7 @@ class BindList extends Component {
   }
 
   _setCurrentUser(user) {
-    Storage.save({
+    storage.save({
       key: 'currentUser',
       rawData: user,
       expires: null   
@@ -238,11 +238,11 @@ class BindList extends Component {
       '确认删除 ' + user.name + ' 吗',
       [
         {text: '确认', onPress: () => {
-          Storage.remove({
+          storage.remove({
             key: 'bindUsers',
             id: user.xuehao,
           });
-          Storage.getAllDataForKey('bindUsers').then(ret => {
+          storage.getAllDataForKey('bindUsers').then(ret => {
             this.setState({
               bindUsers: ret,
             });
