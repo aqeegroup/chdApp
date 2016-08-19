@@ -1,1 +1,3 @@
 ### chdApp
+
+#### CHD成绩查询APP 采用react-native 实现, 开发中...
